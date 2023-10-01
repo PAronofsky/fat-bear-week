@@ -120,11 +120,15 @@ const drawLeaderLine = (start: string, end: string, side: Side) => {
 }
 
 const repositionLeaderLines = () => {
+  removeLeaderLines()
+  drawLeaderLines()
+}
+
+const removeLeaderLines = () => {
   leaderLines.forEach(line => {
     line.remove()
   })
   leaderLines = []
-  drawLeaderLines()
 }
 
 //TODO: loading logic.
@@ -178,6 +182,7 @@ export const Bracket = () => {
 
     return () => {
       isCancelled = true;
+      removeLeaderLines()
     }
 
   }, [navigate, user]);
